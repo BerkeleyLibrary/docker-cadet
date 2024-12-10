@@ -2,18 +2,14 @@
 
 this repository allows you to install a Dockerized version of [CADET](https://www.wgbh.org/foundation/services/ncam/cadet) (Caption and Description Editing Tool), developed by the National Center for Accessible Media at WGBH. 
 
-## getting started / installation
+## getting started 
 
 * ensure you have Docker installed.
-* Run `docker compose up --build`. You will see a message that you have to accept the CADET End User License Agreement (see below).
+* run `docker compose up --build`. you will see a message that you have to accept the CADET End User License Agreement (see below; apologies).
 
-the installer script does the following:
-* it ensures that the EULA has been accepted;
-* it checks to see if CADET has been previously installed in the container;
-    * if it hasn't, it fetches the CADET release and installs it;
-    * if it has, it checks to see if the installed version matches the version to be installed.
-
-it uses the `data` directory (created within this repository) for projects/media files by default, mounted within the container at `/opt/app/data`.
+once you've started it successfully:
+* CADET will be accessible from <http://localhost:8000/>. 
+* CADET is configured to use the `data` directory (created within this repository) for projects/media files by default, mounted within the container at `/opt/app/data`.
 
 ## environment variables / options
 
@@ -38,6 +34,14 @@ CADET_VERSION=2.0.044 docker compose up
 ```
 
 ## unfrequently asked questions
+
+**what does the installer script actually do?**
+
+the installer script does the following:
+* it ensures that the EULA has been accepted;
+* it checks to see if CADET has been previously installed in the container;
+    * if it hasn't, it fetches the CADET release and installs it;
+    * if it has, it checks to see if the installed version matches the version to be installed. if it doesn't match, it prints a warning message.
 
 **what's the deal with the EULA? / why does it install CADET on startup and not part of the image build process?**
 
