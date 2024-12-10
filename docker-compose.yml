@@ -1,0 +1,11 @@
+services:
+  app:
+    build: .
+    environment:
+      - CADET_ACCEPT_EULA
+      - CADET_VERSION=2.0.048
+    ports:
+      - 8000:8000
+    restart: always
+    volumes:
+      - ./data:/opt/app/data
